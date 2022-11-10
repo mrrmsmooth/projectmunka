@@ -1,0 +1,6 @@
+A crypts and monsters egy döntéseken alapuló kalandjáték.
+tartalma:
+    -egy menü amiből bezárható, indítható a játék és fájlból a statisztikák is elérhetők.
+    -maga a játék, ami döntéseken alapul.
+    -az eredményed el lesz mentve.
+    
