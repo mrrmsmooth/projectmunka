@@ -1,4 +1,3 @@
-
 from function import *
 
 
@@ -10,6 +9,4 @@ while choice != '0':
     if choice == '1':
         jatekKezdete()
     elif choice == '2':
-        pass
-    elif choice == '3':
-        pass
+        eredmenyNezes()
