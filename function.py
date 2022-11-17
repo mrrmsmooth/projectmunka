@@ -1,4 +1,5 @@
 from os import system
+import time
 
 filename = 'adatok.csv'
 
@@ -16,6 +17,10 @@ def menu():
     print('2 - statisztikák megnyitása')
     return input('valasztas:')
 
+
+
+
+
 def jatekKezdete():
     system('cls')
     print('Ruha nélkül egy Várban fekszel.')
@@ -25,15 +30,19 @@ def jatekKezdete():
     print(f'Hp:{healthpoint}')
     elsoDontes = input('Döntésed:')
     elsoValasztas(elsoDontes)
-    
+
+
+
+
+
     
 def elsoValasztas(elsoDontes):
     system('cls')
     if elsoDontes == '1':
         print('Felkeltél')
         print('1 - Körbenézel.')
-        print('2 - Megnézed mi van nálad.')
-        print('3 - inventory megnyitása')
+        print('2 - Inkább nem.')
+        print('3 - Inventory megnyitása')
         print(f'Hp:{healthpoint}')
         masodikDontes = input('Döntésed:')
         masodikValasz(masodikDontes)
@@ -44,6 +53,7 @@ def elsoValasztas(elsoDontes):
         system('cls')
         if inventory == []:
             print('Az invetory-d üres.')
+            elsoValasztas()
             
         else:
             print(f'Az inventory-d tartalma:{inventory}')
@@ -51,7 +61,7 @@ def elsoValasztas(elsoDontes):
             print('2 - eszköz kidobása')
             inventoryDontes = input('Döntés:')
             if inventoryDontes == '1':
-                elsoValasztas
+                elsoValasztas()
             elif inventoryDontes == '2':
                 system('cls')
                 print(f'Az inventory-d tartalma:')
@@ -59,6 +69,12 @@ def elsoValasztas(elsoDontes):
                     print('\t\t\t',inventory[i])
                 inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))    
                 inventory.pop(inventoryKidobas-1)
+                print('Az eszközt kidobtad')
+                time.sleep(3)
+                elsoValasztas()
+
+
+
 
 
             
@@ -70,10 +86,16 @@ def masodikValasz(masodikDontes):
         print('youuu2')
 
 
+
+
+
 def Vesztes():
     system('cls')
     print('Vesztettél.')
     input('Enter...')
+
+
+
 
 
 
