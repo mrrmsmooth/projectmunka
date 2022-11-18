@@ -4,7 +4,8 @@ import time
 filename = 'adatok.csv'
 
 healthpoint = 100
-inventory = []
+inventory = ['kés']
+elsoDontes = ''
 
 
 
@@ -67,11 +68,17 @@ def elsoValasztas(elsoDontes):
                 print(f'Az inventory-d tartalma:')
                 for i in range(len(inventory)):
                     print('\t\t\t',inventory[i])
-                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))    
+                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
                 inventory.pop(inventoryKidobas-1)
                 print('Az eszközt kidobtad')
                 time.sleep(3)
-                elsoValasztas()
+                kaka()
+        
+def kaka():
+    input('asd')
+    elsoValasztas(elsoDontes)
+
+    
 
 
 
