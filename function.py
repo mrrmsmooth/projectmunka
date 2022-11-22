@@ -23,6 +23,8 @@ def menu():
 
 
 def jatekKezdete():
+    global elsoDontes
+    
     system('cls')
     print('Ruha nélkül egy Várban fekszel.')
     print('1 - Felkelsz.')
@@ -54,15 +56,15 @@ def elsoValasztas(elsoDontes):
         system('cls')
         if inventory == []:
             print('Az invetory-d üres.')
-            elsoValasztas()
-            
+            time.sleep(3)
+            jatekKezdete()
         else:
             print(f'Az inventory-d tartalma:{inventory}')
             print('1 - inventory bezárása.')
             print('2 - eszköz kidobása')
             inventoryDontes = input('Döntés:')
             if inventoryDontes == '1':
-                elsoValasztas()
+                jatekKezdete()
             elif inventoryDontes == '2':
                 system('cls')
                 print(f'Az inventory-d tartalma:')
@@ -75,8 +77,7 @@ def elsoValasztas(elsoDontes):
                 kaka()
         
 def kaka():
-    input('asd')
-    elsoValasztas(elsoDontes)
+    jatekKezdete()
 
     
 
