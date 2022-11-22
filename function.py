@@ -5,8 +5,12 @@ filename = 'adatok.csv'
 
 healthpoint = 100
 inventory = ['kés']
+
 elsoDontes = ''
-masodikValasz = ''
+masodikDontes = ''
+harmadikDontes = ''
+negyedikDontes = ''
+otodikDontes = ''
 
 def menu():
     system('cls')
@@ -121,14 +125,14 @@ def harmadikValasztas(harmadikDontes):
         if inventory == []:
             print('Az invetory-d üres.')
             time.sleep(3)
-            elsoValasztas(elsoDontes)
+            masodikValasz(masodikDontes)
         else:
             print(f'Az inventory-d tartalma:{inventory}')
             print('1 - inventory bezárása.')
             print('2 - eszköz kidobása')
             inventoryDontes = input('Döntés:')
             if inventoryDontes == '1':
-                elsoValasztas(elsoDontes)
+                masodikValasz(masodikDontes)
             elif inventoryDontes == '2':
                 system('cls')
                 print(f'Az inventory-d tartalma:')
@@ -138,16 +142,41 @@ def harmadikValasztas(harmadikDontes):
                 inventory.pop(inventoryKidobas-1)
                 print('Az eszközt kidobtad')
                 time.sleep(3)
-                elsoValasztas(elsoDontes)
+                masodikValasz(masodikDontes)
 
 def negyedikValasz(negyedikdDontes):
     system('cls')
     if negyedikdDontes == '1':
-        pass
+        print('Egy öreg omladozó kapun mész keresztül. Bent koponyákat és csontvázakat látsz.(frissnek tűnnek)')
+        print('1 - ')
+        print('2 -')
+        print('3 -')
     elif negyedikdDontes == '2':
         pass
     elif negyedikdDontes == '3':
-        pass
+        system('cls')
+        if inventory == []:
+            print('Az invetory-d üres.')
+            time.sleep(3)
+            harmadikValasztas(harmadikDontes)
+        else:
+            print(f'Az inventory-d tartalma:{inventory}')
+            print('1 - inventory bezárása.')
+            print('2 - eszköz kidobása')
+            inventoryDontes = input('Döntés:')
+            if inventoryDontes == '1':
+                harmadikValasztas(harmadikDontes)
+            elif inventoryDontes == '2':
+                system('cls')
+                print(f'Az inventory-d tartalma:')
+                for i in range(len(inventory)):
+                    print('\t\t\t',inventory[i])
+                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
+                inventory.pop(inventoryKidobas-1)
+                print('Az eszközt kidobtad')
+                time.sleep(3)
+                harmadikValasztas(harmadikDontes)
+
     
 def otodikvalasz(otodikDontes):
     pass
