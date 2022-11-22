@@ -6,6 +6,7 @@ filename = 'adatok.csv'
 healthpoint = 100
 inventory = ['kés']
 elsoDontes = ''
+masodikValasz = ''
 
 
 
@@ -29,7 +30,7 @@ def jatekKezdete():
     print('Ruha nélkül egy Várban fekszel.')
     print('1 - Felkelsz.')
     print('2 - Inkább nem.')
-    print('3 - inventory megnyitása')
+    print('3 - inventory megnyitása.')
     print(f'Hp:{healthpoint}')
     elsoDontes = input('Döntésed:')
     elsoValasztas(elsoDontes)
@@ -40,12 +41,14 @@ def jatekKezdete():
 
     
 def elsoValasztas(elsoDontes):
+    global masodikDontes
+
     system('cls')
     if elsoDontes == '1':
         print('Felkeltél')
         print('1 - Körbenézel.')
         print('2 - Inkább nem.')
-        print('3 - Inventory megnyitása')
+        print('3 - Inventory megnyitása.')
         print(f'Hp:{healthpoint}')
         masodikDontes = input('Döntésed:')
         masodikValasz(masodikDontes)
@@ -74,13 +77,7 @@ def elsoValasztas(elsoDontes):
                 inventory.pop(inventoryKidobas-1)
                 print('Az eszközt kidobtad')
                 time.sleep(3)
-                kaka()
-        
-def kaka():
-    jatekKezdete()
-
-    
-
+                jatekKezdete()
 
 
 
@@ -89,12 +86,79 @@ def kaka():
 def masodikValasz(masodikDontes):
     system('cls')
     if masodikDontes == '1':
-        print('youuu')
+        print('Egy vár tornyában vagy, látsz egy létrát. Körülötted egy romos vár található. (Kb: 20 méter magasan vagy.)')
+        print('1 - Lemászol a létrán.')
+        print('2 - Leugrassz.')
+        print('3 - Inventory megnyitása.')
+        print(f'Hp:{healthpoint}')
+        harmadikDontes = input('Döntésed:')
+        harmadikValasztas(harmadikDontes)
     elif masodikDontes == '2':
-        print('youuu2')
+        input('Enter...')
+        Vesztes()
+    elif masodikDontes == '3':
+        system('cls')
+        if inventory == []:
+            print('Az invetory-d üres.')
+            time.sleep(3)
+            elsoValasztas(elsoDontes)
+        else:
+            print(f'Az inventory-d tartalma:{inventory}')
+            print('1 - inventory bezárása.')
+            print('2 - eszköz kidobása')
+            inventoryDontes = input('Döntés:')
+            if inventoryDontes == '1':
+                elsoValasztas(elsoDontes)
+            elif inventoryDontes == '2':
+                system('cls')
+                print(f'Az inventory-d tartalma:')
+                for i in range(len(inventory)):
+                    print('\t\t\t',inventory[i])
+                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
+                inventory.pop(inventoryKidobas-1)
+                print('Az eszközt kidobtad')
+                time.sleep(3)
+                elsoValasztas(elsoDontes)
 
+def harmadikValasztas(harmadikDontes):
+    system('cls')
+    if harmadikDontes == '1':
+        print('lemásztál.')
+        print('1 - A várba mész.')
+        print('2 - Elingdulsz a másik irányba.')
+        print('3 - Inventory megnyitása.')
+    if harmadikDontes == '2':
+        print('Beadtad a Water mlg-t.')
+        print('1 - A várba mész.')
+        print('2 - Elingdulsz a másik irányba.')
+        print('3 - Inventory megnyitása.')
+    elif harmadikDontes == '3':
+        system('cls')
+        if inventory == []:
+            print('Az invetory-d üres.')
+            time.sleep(3)
+            elsoValasztas(elsoDontes)
+        else:
+            print(f'Az inventory-d tartalma:{inventory}')
+            print('1 - inventory bezárása.')
+            print('2 - eszköz kidobása')
+            inventoryDontes = input('Döntés:')
+            if inventoryDontes == '1':
+                elsoValasztas(elsoDontes)
+            elif inventoryDontes == '2':
+                system('cls')
+                print(f'Az inventory-d tartalma:')
+                for i in range(len(inventory)):
+                    print('\t\t\t',inventory[i])
+                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
+                inventory.pop(inventoryKidobas-1)
+                print('Az eszközt kidobtad')
+                time.sleep(3)
+                elsoValasztas(elsoDontes)
 
-
+def negyedikValasz():
+    pass    
+    
 
 
 def Vesztes():
