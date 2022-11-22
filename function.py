@@ -8,9 +8,6 @@ inventory = ['kés']
 elsoDontes = ''
 masodikValasz = ''
 
-
-
-
 def menu():
     system('cls')
     print('Üdvözlet a crypts and monsters-ben!')
@@ -18,10 +15,6 @@ def menu():
     print('1 - játék elindítása.')
     print('2 - statisztikák megnyitása')
     return input('valasztas:')
-
-
-
-
 
 def jatekKezdete():
     global elsoDontes
@@ -35,11 +28,6 @@ def jatekKezdete():
     elsoDontes = input('Döntésed:')
     elsoValasztas(elsoDontes)
 
-
-
-
-
-    
 def elsoValasztas(elsoDontes):
     global masodikDontes
 
@@ -79,10 +67,6 @@ def elsoValasztas(elsoDontes):
                 time.sleep(3)
                 jatekKezdete()
 
-
-
-
-            
 def masodikValasz(masodikDontes):
     system('cls')
     if masodikDontes == '1':
@@ -127,7 +111,7 @@ def harmadikValasztas(harmadikDontes):
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
         print('3 - Inventory megnyitása.')
-    if harmadikDontes == '2':
+    elif harmadikDontes == '2':
         print('Beadtad a Water mlg-t.')
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
@@ -156,9 +140,20 @@ def harmadikValasztas(harmadikDontes):
                 time.sleep(3)
                 elsoValasztas(elsoDontes)
 
-def negyedikValasz():
-    pass    
+def negyedikValasz(negyedikdDontes):
+    system('cls')
+    if negyedikdDontes == '1':
+        pass
+    elif negyedikdDontes == '2':
+        pass
+    elif negyedikdDontes == '3':
+        pass
     
+def otodikvalasz(otodikDontes):
+    pass
+
+def hatodikvalasz(hatodikDontes):
+    pass
 
 
 def Vesztes():
