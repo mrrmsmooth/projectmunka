@@ -7,12 +7,13 @@ healthpoint = 100
 inventory = ['kés']
 
 elsoDontes = ''
-masodikDontes = ''
-harmadikDontes = ''
-negyedikDontes = ''
-otodikDontes = ''
+masodikValasz = ''
+harmadikValasztas = ''
+negyedikValasz = ''
+ertek = 0
 
 def menu():
+    global ertek
     system('cls')
     print('Üdvözlet a crypts and monsters-ben!')
     print('0 - kilépés a játékból.')
@@ -20,7 +21,46 @@ def menu():
     print('2 - statisztikák megnyitása')
     return input('valasztas:')
 
+def eszköztár():
+    global ertek
+    print(f'Az inventory-d tartalma:{inventory}')
+    print('1 - inventory bezárása.')
+    print('2 - eszköz kidobása')
+    inventoryDontes = input('Döntés:')
+    if inventoryDontes == '1':
+        order()
+    elif inventoryDontes == '2':
+        system('cls')
+        print(f'Az inventory-d tartalma:')
+        for i in range(len(inventory)):
+            print('\t\t\t',inventory[i])
+        inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
+        inventory.pop(inventoryKidobas-1)
+        print('Az eszközt kidobtad')
+        time.sleep(3)
+        order()
+
+def order():
+    if ertek == 0:
+        menu()
+    elif ertek == 1:
+        jatekKezdete()
+    elif ertek == 2:
+        elsoValasztas(elsoDontes)
+    elif ertek == 3:
+        masodikValasz(masodikDontes)
+    elif ertek == 4:
+        harmadikValasztas()
+    elif ertek == 5:
+        negyedikValasz()
+    elif ertek == 6:
+        otodikvalasz()
+    elif ertek == 7:
+        hatodikvalasz()
+
+
 def jatekKezdete():
+    global ertek
     global elsoDontes
     
     system('cls')
@@ -32,9 +72,10 @@ def jatekKezdete():
     elsoDontes = input('Döntésed:')
     elsoValasztas(elsoDontes)
 
-def elsoValasztas(elsoDontes):
-    global masodikDontes
 
+def elsoValasztas(elsoDontes):
+    global ertek
+    global masodikDontes
     system('cls')
     if elsoDontes == '1':
         print('Felkeltél')
@@ -48,30 +89,11 @@ def elsoValasztas(elsoDontes):
         input('Enter...')
         Vesztes()
     elif elsoDontes == '3':
-        system('cls')
-        if inventory == []:
-            print('Az invetory-d üres.')
-            time.sleep(3)
-            jatekKezdete()
-        else:
-            print(f'Az inventory-d tartalma:{inventory}')
-            print('1 - inventory bezárása.')
-            print('2 - eszköz kidobása')
-            inventoryDontes = input('Döntés:')
-            if inventoryDontes == '1':
-                jatekKezdete()
-            elif inventoryDontes == '2':
-                system('cls')
-                print(f'Az inventory-d tartalma:')
-                for i in range(len(inventory)):
-                    print('\t\t\t',inventory[i])
-                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
-                inventory.pop(inventoryKidobas-1)
-                print('Az eszközt kidobtad')
-                time.sleep(3)
-                jatekKezdete()
+        eszköztár()
+
 
 def masodikValasz(masodikDontes):
+    global ertek
     system('cls')
     if masodikDontes == '1':
         print('Egy vár tornyában vagy, látsz egy létrát. Körülötted egy romos vár található. (Kb: 20 méter magasan vagy.)')
@@ -85,66 +107,31 @@ def masodikValasz(masodikDontes):
         input('Enter...')
         Vesztes()
     elif masodikDontes == '3':
-        system('cls')
-        if inventory == []:
-            print('Az invetory-d üres.')
-            time.sleep(3)
-            elsoValasztas(elsoDontes)
-        else:
-            print(f'Az inventory-d tartalma:{inventory}')
-            print('1 - inventory bezárása.')
-            print('2 - eszköz kidobása')
-            inventoryDontes = input('Döntés:')
-            if inventoryDontes == '1':
-                elsoValasztas(elsoDontes)
-            elif inventoryDontes == '2':
-                system('cls')
-                print(f'Az inventory-d tartalma:')
-                for i in range(len(inventory)):
-                    print('\t\t\t',inventory[i])
-                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
-                inventory.pop(inventoryKidobas-1)
-                print('Az eszközt kidobtad')
-                time.sleep(3)
-                elsoValasztas(elsoDontes)
+        eszköztár()
+
 
 def harmadikValasztas(harmadikDontes):
+    global ertek
+    global negyedikdontes
     system('cls')
     if harmadikDontes == '1':
         print('lemásztál.')
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
         print('3 - Inventory megnyitása.')
+        negyedikdontes = input('Döntésed:')
     elif harmadikDontes == '2':
         print('Beadtad a Water mlg-t.')
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
         print('3 - Inventory megnyitása.')
+        negyedikdontes = input('Döntésed:')
     elif harmadikDontes == '3':
-        system('cls')
-        if inventory == []:
-            print('Az invetory-d üres.')
-            time.sleep(3)
-            masodikValasz(masodikDontes)
-        else:
-            print(f'Az inventory-d tartalma:{inventory}')
-            print('1 - inventory bezárása.')
-            print('2 - eszköz kidobása')
-            inventoryDontes = input('Döntés:')
-            if inventoryDontes == '1':
-                masodikValasz(masodikDontes)
-            elif inventoryDontes == '2':
-                system('cls')
-                print(f'Az inventory-d tartalma:')
-                for i in range(len(inventory)):
-                    print('\t\t\t',inventory[i])
-                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
-                inventory.pop(inventoryKidobas-1)
-                print('Az eszközt kidobtad')
-                time.sleep(3)
-                masodikValasz(masodikDontes)
+        eszköztár()
+
 
 def negyedikValasz(negyedikdDontes):
+    global ertek
     system('cls')
     if negyedikdDontes == '1':
         print('Egy öreg omladozó kapun mész keresztül. Bent koponyákat és csontvázakat látsz.(frissnek tűnnek)')
@@ -154,29 +141,7 @@ def negyedikValasz(negyedikdDontes):
     elif negyedikdDontes == '2':
         pass
     elif negyedikdDontes == '3':
-        system('cls')
-        if inventory == []:
-            print('Az invetory-d üres.')
-            time.sleep(3)
-            harmadikValasztas(harmadikDontes)
-        else:
-            print(f'Az inventory-d tartalma:{inventory}')
-            print('1 - inventory bezárása.')
-            print('2 - eszköz kidobása')
-            inventoryDontes = input('Döntés:')
-            if inventoryDontes == '1':
-                harmadikValasztas(harmadikDontes)
-            elif inventoryDontes == '2':
-                system('cls')
-                print(f'Az inventory-d tartalma:')
-                for i in range(len(inventory)):
-                    print('\t\t\t',inventory[i])
-                inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
-                inventory.pop(inventoryKidobas-1)
-                print('Az eszközt kidobtad')
-                time.sleep(3)
-                harmadikValasztas(harmadikDontes)
-
+        eszköztár()
     
 def otodikvalasz(otodikDontes):
     pass
