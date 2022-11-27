@@ -2,18 +2,20 @@ from os import system
 import time
 from data import *
 filename = 'adatok.csv'
-ertek = 0
+ertek = ''
 
-def adatokmentese():
-    file = open(filename, 'r', encoding='utf-8')
-    filename = mentesek
-    mentesek.append(f'5/{ertek}')
-    file.close()
-    fajlbamentes()
 
-def fajlbamentes():
+def ujErtek():
+    global ertek
+    mentesek.append(ertek)
+    saveToFile(ertek)
+
+
+def saveToFile(ertek):
     file = open(filename, 'a', encoding='utf-8')
-    file.write(f'{ertek}\n')
+    file.write(f'{ertek}' + '\n')
+    file.close()
+
 
 def menu():
     global ertek
@@ -26,219 +28,140 @@ def menu():
 
 
 def eredmenyNezes():
+    system('cls')
     file = open(filename, 'r', encoding='utf-8')
-    for row in file:
-        mentesek
+    print('Eredmények')
+    for a in mentesek:
+        print(f'\t{a}')
+    input('Enter...')
     file.close()
-
-
-'''
-def loadCars():
-    file = open(filename, 'r', encoding='utf-8')
-    global cimsor
-    cimsor = file.readline() # címsor
-    for row in file:
-        mentesek
-    file.close()
-
-def addNewCar():
-    system('cls')
-    print('Új autó')
-    car = input('Autó típusa: ')
-    performance = input('Teljesítmánye: ')
-    mentesek[car] = performance
-    saveCarToFile(car, performance)
-    input('Autó felvéve. Tovább (Enter)...')
-
-def saveCarToFile(car, performace):
-    file = open(filename, 'a', encoding='utf-8')
-    file.write(f'{car};{performace}\n')
-    file.close()
-
-def printAllCar():
-    system('cls')
-    print('Autók listája')
-    for key, value in cars.items():
-        print(f'{key} - {value}HP.')
-    input('Tovább (Enter)...')
-
-def deleteCar():
-    system('cls')
-    print('Autó törlése')
-    car = input('A törlendő autó típusa: ')
-    if car in mentesek:
-        mentesek.pop(car)
-        saveAllToFile()
-        input('Autó törölve. Tovább (Enter)...')
-    else:
-        input('Nincs ilyen autó. Tovább (Enter)...')
-
-def saveAllToFile():
-    file = open(filename, 'w', encoding='utf-8')
-    file.write(cimsor)
-    for car,performace in cars.items():
-        file.write(f'{car};{performace}\n')
-    
-    file.close()
-
-
-'''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-def eszköztár():
-    global ertek
-    print(f'Az inventory-d tartalma:{inventory}')
-    print('1 - inventory bezárása.')
-    print('2 - eszköz kidobása')
-    inventoryDontes = input('Döntés:')
-    if inventoryDontes == '1':
-        order()
-    elif inventoryDontes == '2':
-        system('cls')
-        print(f'Az inventory-d tartalma:')
-        for i in range(len(inventory)):
-            print('\t\t\t',inventory[i])
-        inventoryKidobas = int(input('Melyik eszközt szeretnéd kidobni:'))
-        inventory.pop(inventoryKidobas-1)
-        print('Az eszközt kidobtad')
-        time.sleep(3)
-        order()
-
-
-def order():
-    if ertek == 0:
-        menu()
-    elif ertek == 1:
-        jatekKezdete()
-    elif ertek == 2:
-        elsoValasztas(elsoDontes)
-    elif ertek == 3:
-        masodikValasz(masodikDontes)
-    elif ertek == 4:
-        harmadikValasztas()
-    elif ertek == 5:
-        negyedikValasz()
-    elif ertek == 6:
-        otodikvalasz()
-    elif ertek == 7:
-        hatodikvalasz()
-'''
 
 def jatekKezdete():
+    global ertek
     system('cls')
+    ertek = '6/0'
     print('Ruha nélkül egy Várban fekszel.')
     print('1 - Felkelsz.')
     print('2 - Inkább nem.')
-    print(mentesek)
     elsoDontes = input('Döntésed:')
     elsoValasztas(elsoDontes)
 
 
 def elsoValasztas(elsoDontes):
-    global masodikDontes
     system('cls')
+    global ertek
     if elsoDontes == '1':
         print('Felkeltél')
         print('1 - Körbenézel.')
         print('2 - Inkább nem.')
         masodikDontes = input('Döntésed:')
+        ertek = '6/1'
         masodikValasz(masodikDontes)
     elif elsoDontes == '2':
         input('Enter...')
         Vesztes()
+        ertek = '6/1'
 
 
 
 def masodikValasz(masodikDontes):
 
     system('cls')
+    global ertek
     if masodikDontes == '1':
         print('Egy vár tornyában vagy, látsz egy létrát. Körülötted egy romos vár található. (Kb: 20 méter magasan vagy.)')
         print('1 - Lemászol a létrán.')
         print('2 - Leugrassz.')
+        print('3 - Megpróbálod feldolgozni, hogy hogyan lehet ennyire rossza a dök.')
         harmadikDontes = input('Döntésed:')
+        ertek = '6/2'
         harmadikValasztas(harmadikDontes)
     elif masodikDontes == '2':
         input('Enter...')
         Vesztes()
+        ertek = '6/2'
+    
 
 
 
 def harmadikValasztas(harmadikDontes):
     system('cls')
+    global ertek
     if harmadikDontes == '1':
         print('lemásztál.')
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
         negyedikDontes = input('Döntésed:')
+        ertek = '6/3'
         negyedikValasz(negyedikDontes)
     elif harmadikDontes == '2':
         print('Beadtad a Water mlg-t.')
         print('1 - A várba mész.')
         print('2 - Elingdulsz a másik irányba.')
-        negyedikdontes = input('Döntésed:')
-        if ertek == 4:
-            ertek = 4
-        else:
-            ertek += 4
+        negyedikDontes = input('Döntésed:')
+        ertek = '6/3'
         negyedikValasz(negyedikDontes)
+    elif harmadikDontes == '3':
+        ertek = '6/3'
+        Vesztes()
 
 
 def negyedikValasz(negyedikDontes):
     system('cls')
+    global ertek
     if negyedikDontes == '1':
         print('Egy öreg omladozó kapun mész keresztül. Bent koponyákat és csontvázakat látsz.(frissnek tűnnek)')
         print('1 - Tovább mész.')
         print('2 - Túlságosan megijesztett a most leírt táj, ezért feladod.')
         otodikdontes = input('Döntésed:')
+        ertek = '6/4'
         otodikvalasz(otodikdontes)
     elif negyedikDontes == '2':
         print('Egy napja mész, de semmit nem találtál(egy erdőben vagy)')
         print('1 - Tovább mész.')
         print('2 - Inkább feladod.')
         otodikdontes2 = input('Döntésed:')
+        ertek = '6/4'
         otodikvalasz2(otodikdontes2)
     
 def otodikvalasz(otodikDontes):
     system('cls')
+    global ertek
     if otodikDontes == '1':
         print('Tovább mentél, találtál egy kincset grat nyertél.(nincs kedvem tovább írni)')
+        ertek = '6/4'
         time.sleep(5)
         nyertes()
     elif otodikDontes == '2':
+        ertek = '6/4'
         Vesztes()
 
 def otodikvalasz2(otodikDontes2):
     system('cls')
+    global ertek
     if otodikDontes2 == '1':
         print('Egy hete mész és elfogyott mindened. Hogyan ölöd meg magad?')
         print('1 - Leszúrod magad egy fadarabbal.')
         print('2 - Leugrassz egy magas fáról(fall damage)')
         print('3 - Belépsz a Jedlik Dök-be.')
         hatodikDontes2 = input('Döntésed:')
+        ertek = '6/5'
         hatodikValasz2(hatodikDontes2)
     elif otodikDontes2 == '2':
+        ertek = '6/5'
         Vesztes()
 
 def hatodikValasz2(hatodikDontes2):
     system('cls')
+    global ertek
     if hatodikDontes2 == '1':
+        ertek = '6/5'
+        Vesztes()
+    if hatodikDontes2 == '2':
+        ertek = '6/5'
+        Vesztes()
+    if hatodikDontes2 == '3':
+        ertek = '6/5'
         Vesztes()
 
 
@@ -247,14 +170,11 @@ def Vesztes():
     system('cls')
     print('Vesztettél.')
     input('Enter...')
-    adatokmentese()
+    ujErtek()
 
 def nyertes():
+    global ertek
     system('cls')
+    ertek = '6/6'
     print('Gratula Nyertél.(nem mintha nehéz lett volna.)')
-
-
-
-
-
-
+    ujErtek()
